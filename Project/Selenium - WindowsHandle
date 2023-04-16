@@ -1,0 +1,46 @@
+package org.task.selenium;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class WindowsHandle {
+	
+	public static void main(String[] args) {
+		
+		WebDriverManager.chromedriver().setup();
+		
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("https://www.amazon.in/");
+
+		WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+		searchBox.sendKeys("iphone 14",Keys.ENTER);
+		
+		WebElement iphoneRed = driver.findElement(By.xpath("(//span[text()='Apple iPhone 14 (128 GB) - (Product) RED'])[3]"));
+		iphoneRed.click();
+
+		Set<String> allWindId = driver.getWindowHandles();
+ 
+		int count = 0;
+		
+		for (String eachId : allWindId) {
+			if (count==1){
+				driver.switchTo().window(eachId);		
+				}	count++;	
+		}
+	
+		WebElement preOrder = driver.findElement(By.id("buy-now-button"));
+		preOrder.click();
+
+	}
+
+	}
+
+
