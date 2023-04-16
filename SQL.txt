@@ -1,0 +1,40 @@
+1.Print max salary for a particular department 
+Syntax : SELECT colunm_name, MAX(column_name) FROM table_name GROUP BY column_name;
+
+2.What are Scalar functions and write a query?
+
+Scalar functions are the built-in functions in SQL, and whatever be the input provided to the scalar functions,
+the output returned by these functions will always be a single value.
+
+UCASE() - mysql> SELECT UCASE ("Welcome to Javatpoint") AS UpperCase_String;  
+LCASE() - mysql> SELECT LCASE ("WELCOME TO JAVATPOINT") AS LowerCase_String;   
+MID()	  - mysql> SELECT ID, MID (Name, 3, 5) AS NameSubstring, Age, Address, Salary FROM customers; 
+LENGTH()- mysql> SELECT ID, LENGTH (Name) AS LengthOfName, Age, Address, Salary FROM customers;  
+ROUND() - mysql> SELECT ROUND (ColumnName, Decimals) FROM TableName;  
+NOW()   - mysql> SELECT ID, Name, Age, Address, Salary, NOW () AS 'DatenTime' FROM customers;  
+FORMAT()- mysql> SELECT ID, Name, Age, Address, FORMAT (Salary / 0.5, 2) AS FormattedSalary FROM customers;  
+
+3. Write a SQL query to Rename the column name.
+
+ALTER TABLE table_name
+RENAME COLUMN old_column_name1 TO new_col_name1,
+RENAME COLUMN old_column_name2 TO new_col_name2,
+RENAME COLUMN old_column_name3 TO new_col_name3;
+
+4.How to fetch 3rd highest salary using Rank Function?
+
+Syntax : select min(salary) from (select distinct salary from emp order by salary desc) where rownum < 3;  
+
+5.Explain joins with example and output?
+SQL Join statement is used to combine data or rows from two or more tables based on a common field between them. 
+Types of Joins are as follows: 
+INNER JOIN,LEFT JOIN,RIGHT JOIN,FULL JOIN
+
+SELECT table1.column1,table1.column2,table2.column1,
+FROM table1 
+INNER JOIN table2
+ON table1.matching_column = table2.matching_column;
+
+table1: First table.
+table2: Second table
+matching_column: Column common to both the tables.
